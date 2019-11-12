@@ -1,12 +1,16 @@
 //Import the necessary libraries/declare the necessary objects
 var express = require("express");
 var myParser = require("body-parser");
+const cors = require("cors");
 var app = express();
+app.use(cors());
 app.use(myParser.urlencoded({extended : true}));
+app.use(myParser.json());
 app.post("/sendmail", function(request, response) {
     var nodemailer = require('nodemailer');
     data = request.body; //This prints the JSON document received (if it is a JSON document)
     //console.log(data.name);
+    console.log("the query receieved");
     var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
