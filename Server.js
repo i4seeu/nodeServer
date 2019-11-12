@@ -25,9 +25,11 @@ app.post("/sendmail", function(request, response) {
 
     transporter.sendMail(mailOptions, function(error, info){
     if (error) {
+        console.log("An error occured!!");
         response.setHeader('Content-Type', 'application/json');
         response.send(JSON.stringify({'success':0}));
     } else {
+        console.log("successfully sent an email");
         response.setHeader('Content-Type', 'application/json');
         response.send(JSON.stringify({'success':1}));
     }
